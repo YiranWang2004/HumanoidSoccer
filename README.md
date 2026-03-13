@@ -107,6 +107,12 @@ python scripts/rsl_rl/play_multi.py --task Tracking-Flat-G1-SoccerDestination-RN
 
 ##
 
+## TODO
+
+- [x] Release PAiD training code
+- [x] Release PAiD motion dataset
+- [ ] Release PAiD domain randomization code
+
 ## Citation
 
 If you find this work useful in your research, please consider citing:
