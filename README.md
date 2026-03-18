@@ -66,16 +66,17 @@ pip install -e source/whole_body_tracking
 
 ## Training & Play Example
 ### Training
+Uniform sampling for example
 ```bash
 python scripts/rsl_rl/train_multi.py --task Tracking-Flat-G1-SoccerDestination-RNN-v0 \
-    --motion_path motions/soccer-motions \
-    --num_envs 4096 \
+    --motion_path motions/soccer-standard \
+    --num_envs 8192 \
     --headless
 ```
 ### Play
 ```bash
 python scripts/rsl_rl/play_multi.py --task Tracking-Flat-G1-SoccerDestination-RNN-v0 \
-    --motion_path motions/soccer-motions \
+    --motion_path motions/soccer-standard \
     --num_envs 1  
 ```
 
@@ -83,25 +84,25 @@ python scripts/rsl_rl/play_multi.py --task Tracking-Flat-G1-SoccerDestination-RN
 ### Training
 ```bash
 python scripts/rsl_rl/train_multi.py --task Tracking-Terrain-G1-RNN-v0 \
-    --motion_path motions/soccer-motions \
+    --motion_path motions/soccer-standard \
     --run_name test \
-    --num_envs 4096 \
+    --num_envs 8192 \
     --headless 
 ```
 
 ```bash
 python scripts/rsl_rl/train_multi.py --task Tracking-Flat-G1-SoccerDestination-RNN-v0 \
-    --motion_path motions/soccer-motions \
+    --motion_path motions/soccer-standard \
     --load_run {run_name} \
     --run_name test_resume \
-    --num_envs 4096 \
+    --num_envs 8192 \
     --resume True \
     --headless 
 ```
 ### Play
 ```bash
 python scripts/rsl_rl/play_multi.py --task Tracking-Flat-G1-SoccerDestination-RNN-v0 \
-    --motion_path motions/soccer-motions \
+    --motion_path motions/soccer-standard \
     --num_envs 1  
 ```
 
