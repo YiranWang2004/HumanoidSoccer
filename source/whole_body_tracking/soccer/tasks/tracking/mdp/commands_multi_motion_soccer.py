@@ -677,8 +677,8 @@ class MotionCommand(CommandTerm):
             return
 
         self._sample_soccer_offset(env_ids)
-        self._adaptive_sampling(env_ids) 
-        # self._uniform_sampling(env_ids)
+        # self._adaptive_sampling(env_ids) 
+        self._uniform_sampling(env_ids)
         self._compute_soccer_ball_positions(env_ids)
         self._update_soccer_ball(env_ids)
         self._update_target_points(env_ids)
