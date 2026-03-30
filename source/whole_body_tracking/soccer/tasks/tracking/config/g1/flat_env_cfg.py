@@ -32,7 +32,6 @@ class G1FlatEnvCfg(TrackingEnvCfg):
             "right_wrist_yaw_link",
         ]
 
-
 @configclass
 class G1FlatWoStateEstimationEnvCfg(G1FlatEnvCfg):
     def __post_init__(self):
