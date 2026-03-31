@@ -677,8 +677,13 @@ class MotionCommand(CommandTerm):
             return
 
         self._sample_soccer_offset(env_ids)
-        # self._adaptive_sampling(env_ids) 
-        self._uniform_sampling(env_ids)
+        sampling_strategy = str(self.cfg.sampling_strategy).lower()
+        if sampling_strategy == "adaptive":
+            self._adaptive_sampling(env_ids)
+        elif sampling_strategy == "uniform":
+            self._uniform_sampling(env_ids)
+        else:
+            raise ValueError(f"Unsupported sampling_strategy: {self.cfg.sampling_strategy}")
         self._compute_soccer_ball_positions(env_ids)
         self._update_soccer_ball(env_ids)
         self._update_target_points(env_ids)
@@ -837,6 +842,7 @@ class MotionCommandCfg(CommandTermCfg):
     velocity_range: dict[str, tuple[float, float]] = {}
 
     joint_position_range: tuple[float, float] = (-0.52, 0.52)
+    sampling_strategy: str = "uniform"
 
     adaptive_kernel_size: int = 3
     adaptive_lambda: float = 0.1

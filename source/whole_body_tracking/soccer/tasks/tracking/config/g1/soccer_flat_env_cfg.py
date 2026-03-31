@@ -162,6 +162,7 @@ class G1TerrainMotionEnvCfg(G1TerrainEnvCfg):
     scene: G1FlatSoccerSceneCfg = G1FlatSoccerSceneCfg(num_envs=4096, env_spacing=2.5)
     def __post_init__(self):
         super().__post_init__()
+        self.commands.motion.sampling_strategy = "adaptive"
         _apply_soccer_obs(self)
         _apply_soccer_scene(self)
 
@@ -172,6 +173,7 @@ class G1FlatMotionEnvCfg(G1FlatEnvCfg):
     def __post_init__(self):
         super().__post_init__()
         self.commands.motion.class_type = mdp.commands_multi_motion_soccer.MotionCommand
+        self.commands.motion.sampling_strategy = "uniform"
         _apply_soccer_obs(self)
         _apply_soccer_scene(self)
 
@@ -455,5 +457,3 @@ class G1FlatSoccerStudentEnvCfg(G1FlatKickEnvCfg):
             func=mdp.target_destination_pos_local_first_frame,
             params={"command_name": "motion"},
         )
-
-

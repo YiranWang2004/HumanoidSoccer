@@ -35,7 +35,8 @@ Soccer is a challenging task for humanoid robots, requiring tightly integrated p
 
 This repository contains:
 - Core task/environment code: [`source/whole_body_tracking/soccer`](source/whole_body_tracking/soccer)
-- Training & play scripts: [`scripts/rsl_rl`](scripts/rsl_rl)
+- Training & play python entrypoints: [`scripts/rsl_rl`](scripts/rsl_rl)
+- Shell helpers: [`shell`](shell)
 - Motion datasets and labels: [`motions`](motions) 
 
 The kick motions used in our paper are publicly released in [`motions`](motions).
@@ -83,22 +84,11 @@ python scripts/rsl_rl/play_multi.py --task Tracking-Flat-G1-SoccerDestination-RN
 ## Progressive Training & Play
 ### Training
 ```bash
-python scripts/rsl_rl/train_multi.py --task Tracking-Terrain-G1-RNN-v0 \
-    --motion_path motions/soccer-standard \
-    --run_name test \
-    --num_envs 8192 \
-    --headless 
+bash shell/progressive_soccer_train_play.sh test
 ```
 
-```bash
-python scripts/rsl_rl/train_multi.py --task Tracking-Flat-G1-SoccerDestination-RNN-v0 \
-    --motion_path motions/soccer-standard \
-    --load_run {run_name} \
-    --run_name test_resume \
-    --num_envs 8192 \
-    --resume True \
-    --headless 
-```
+This helper runs the two training stages sequentially and automatically resolves the latest first-stage run as `--load_run` for the second stage. If no run name is provided, it defaults to `test`.
+
 ### Play
 ```bash
 python scripts/rsl_rl/play_multi.py --task Tracking-Flat-G1-SoccerDestination-RNN-v0 \
